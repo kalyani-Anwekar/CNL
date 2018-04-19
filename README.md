@@ -1,2 +1,0 @@
-# CNL
-Computer net programs
