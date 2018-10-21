@@ -1,0 +1,35 @@
+
+
+Assignment No-1-A
+Div-A
+Roll No-42
+
+/* Implement Parallel Reduction using Min, Max, Sum and Average operations.*/
+
+#include <stdio.h>
+#include <omp.h>
+#include <cstdlib>
+int main()
+{
+int arr[100000];
+omp_set_num_threads(4);
+int sum=0;
+int i;
+for( i=0; i<100000; i++)
+arr[i] = 1;
+
+#pragma omp parallel for reduction(+:sum)
+for( i=0;i<100000; i++)
+{
+         sum = sum+arr[i];
+    
+}
+
+printf("\nSUM is  = %d", sum);
+}
+/*
+gescoe@gescoe-OptiPlex-3010:~/Desktop$ g++ Psum.c -fopenmp
+gescoe@gescoe-OptiPlex-3010:~/Desktop$ ./a.out
+
+SUM is  = 100000gescoe@gescoe-OptiPlex-3010:~/Desktop$
+*/
